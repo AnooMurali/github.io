@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anoopama (Anoo) Murali | Senior Agile Business Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #fff0f7;
+      --warm-white: #fff5fa;
+      --sand: #f0c0d8;
+      --pink: #e0186c;
+      --pink-dark: #b8105a;
+      --deep: #5a0030;
+      --text: #3a0020;
+      --text-light: #8a4060;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 24px rgba(90,0,48,0.10);
+      --radius: 16px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,240,247,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--sand);
+      padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { font-family: 'Lora', serif; font-size: 1.2rem; color: var(--deep); font-weight: 600; text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--pink); }
+
+    /* HERO — wallpaper background */
+    .hero {
+      min-height: 90vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 4rem 2rem;
+      background-image: url('/mnt/user-data/uploads/wallpaper2.jpg');
+      background-size: cover; background-position: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(90,0,48,0.45) 0%, rgba(224,24,108,0.25) 50%, rgba(255,100,180,0.15) 100%);
+    }
+    .hero-content { max-width: 720px; position: relative; z-index: 1; }
+    .hero-avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.15));
+      border: 3px solid rgba(255,255,255,0.6);
+      margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      backdrop-filter: blur(8px);
+    }
+    .hero-greeting { font-size: 0.95rem; color: rgba(255,220,240,0.95); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .hero h1 { font-family: 'Lora', serif; font-size: clamp(2rem, 5vw, 3.2rem); color: #ffffff; line-height: 1.2; margin-bottom: 0.75rem; text-shadow: 0 2px 12px rgba(0,0,0,0.2); }
+    .hero h1 span { color: #ffd6ec; }
+    .hero-title { font-size: 1rem; color: rgba(255,220,240,0.95); font-weight: 600; margin-bottom: 1rem; }
+    .hero p { font-size: 1rem; color: rgba(255,240,250,0.9); max-width: 580px; margin: 0 auto 0.75rem; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1.25rem 0 1.75rem; }
+    .badge { background: rgba(255,255,255,0.18); color: white; padding: 0.3rem 0.9rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(4px); }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 0.75rem 1.75rem; border-radius: 50px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-primary { background: white; color: var(--pink); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    .btn-primary:hover { background: #ffd6ec; transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.6); }
+    .btn-outline:hover { background: rgba(255,255,255,0.15); border-color: white; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 920px; margin: 0 auto; }
+    .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Lora', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--deep); margin-bottom: 1rem; }
+    .section-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--pink), #ff80bf); border-radius: 2px; margin-bottom: 2.5rem; }
+
+    /* ABOUT */
+    #about { background: var(--warm-white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: start; }
+    .about-card { background: var(--card-bg); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); text-align: center; border-top: 4px solid var(--pink); }
+    .about-card-avatar { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, #ffe0f0, #ffc0e0); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .about-card h3 { font-family: 'Lora', serif; color: var(--deep); margin-bottom: 0.25rem; font-size: 1.1rem; }
+    .about-card .role { font-size: 0.82rem; color: var(--pink); font-weight: 600; }
+    .about-card .location { font-size: 0.82rem; color: var(--text-light); margin-top: 0.4rem; }
+    .about-card .cert { margin-top: 1rem; background: rgba(224,24,108,0.07); border-radius: 8px; padding: 0.6rem; font-size: 0.8rem; color: var(--deep); font-weight: 600; }
+    .about-text p { color: var(--text-light); margin-bottom: 1rem; font-size: 1rem; }
+
+    /* SKILLS */
+    #skills { background: var(--cream); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+    .skill-card { background: var(--card-bg); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); border-left: 4px solid var(--pink); transition: transform 0.2s; }
+    .skill-card:hover { transform: translateY(-3px); }
+    .skill-category { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--pink); margin-bottom: 0.75rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { background: #fff0f7; color: var(--deep); padding: 0.3rem 0.75rem; border-radius: 50px; font-size: 0.82rem; font-weight: 500; }
+
+    /* EXPERIENCE */
+    #experience { background: var(--warm-white); }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--pink), #ff80bf); }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -2.4rem; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--pink); border: 3px solid var(--warm-white); box-shadow: 0 0 0 2px var(--pink); }
+    .timeline-card { background: var(--card-bg); border-radius: var(--radius); padding: 1.5rem 1.75rem; box-shadow: var(--shadow); }
+    .timeline-meta { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem; }
+    .timeline-role { font-family: 'Lora', serif; font-size: 1.1rem; color: var(--deep); }
+    .timeline-date { font-size: 0.8rem; font-weight: 500; color: var(--pink); background: rgba(224,24,108,0.08); padding: 0.2rem 0.65rem; border-radius: 50px; }
+    .timeline-company { font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem; font-weight: 500; }
+    .timeline-desc { color: var(--text-light); font-size: 0.93rem; }
+    .timeline-desc ul { padding-left: 1.2rem; margin-top: 0.4rem; }
+    .timeline-desc li { margin-bottom: 0.4rem; }
+
+    /* PROJECTS */
+    #projects { background: var(--cream); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .project-card { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(90,0,48,0.14); }
+    .project-thumb { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; }
+    .project-body { padding: 1.5rem; }
+    .project-body h3 { font-family: 'Lora', serif; color: var(--deep); margin-bottom: 0.4rem; }
+    .project-body p { font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-tag { background: rgba(224,24,108,0.08); color: var(--pink); padding: 0.2rem 0.6rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; }
+
+    /* FOOTER */
+    footer { background: var(--deep); color: rgba(255,255,255,0.7); text-align: center; padding: 2.5rem 2rem; }
+    footer a { color: #ffb0d8; text-decoration: none; }
+    footer a:hover { color: white; }
+    .footer-name { font-family: 'Lora', serif; color: white; font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
+
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Anoo Murali</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-avatar">👋</div>
+    <p class="hero-greeting">Welcome to my portfolio</p>
+    <h1>Anoopama <span>(Anoo)</span> Murali</h1>
+    <p class="hero-title">Senior Agile Business Analyst · Product & Regulatory Transformation Specialist</p>
+    <p>20+ years turning complex business challenges into scalable digital solutions — across financial platforms, regulatory compliance, AI automation, and cloud modernization.</p>
+    <div class="hero-badges">
+      <span class="badge">CBAP® Certified</span>
+      <span class="badge">Agile / Scrum</span>
+      <span class="badge">Regulatory Compliance</span>
+      <span class="badge">AI / LLM Enablement</span>
+      <span class="badge">Google Cloud (GCP)</span>
+    </div>
+    <div class="hero-buttons">
+      <a href="#experience" class="btn btn-primary">View My Experience</a>
+      <a href="mailto:anoo21@gmail.com" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">Get to know me</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-divider"></div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-avatar">🌸</div>
+        <h3>Anoopama (Anoo) Murali</h3>
+        <p class="role">Senior Agile Business Analyst</p>
+        <p class="location">📍 Florida, USA</p>
+        <p class="location">📞 (973) 901-4346</p>
+        <div class="cert">🏅 CBAP® Certified · ID: 13432610<br/>Valid through Sep 2028</div>
+      </div>
+      <div class="about-text">
+        <p>I'm a CBAP-certified Senior Business Analyst with over 20 years of enterprise experience delivering high-impact digital transformations. My work spans financial platforms, regulatory compliance (KYC, AML, PADFAA/DOJ), AI-enabled automation, and cloud modernization.</p>
+        <p>I thrive at the intersection of business strategy and technology — translating complex regulatory and business requirements into sprint-ready, scalable product solutions. I've led distributed Agile teams and collaborated across Product, Engineering, and Operations at global organizations.</p>
+        <p>Outside of work, I enjoy web design & development, singing (Indian Classical), cooking, baking, and gardening — all things that require creativity, patience, and attention to detail (sound familiar?).</p>
+        <a href="mailto:anoo21@gmail.com" class="btn btn-primary" style="display:inline-block;margin-top:1rem">Say Hello 👋</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">What I bring to the table</p>
+    <h2 class="section-title">Core Skills</h2>
+    <div class="section-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <p class="skill-category">Agile & Delivery</p>
+        <div class="skill-tags">
+          <span class="tag">Agile / Scrum</span><span class="tag">BDD</span><span class="tag">Backlog Management</span><span class="tag">UAT Leadership</span><span class="tag">Sprint Planning</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-category">Product & Analysis</p>
+        <div class="skill-tags">
+          <span class="tag">Product Lifecycle Mgmt</span><span class="tag">UX Prototyping</span><span class="tag">API Analysis</span><span class="tag">Gap Analysis</span><span class="tag">Process Flows</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-category">Regulatory & Compliance</p>
+        <div class="skill-tags">
+          <span class="tag">KYC / AML</span><span class="tag">PADFAA / DOJ</span><span class="tag">Financial Risk</span><span class="tag">Data Governance</span><span class="tag">Regulatory Reporting</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-category">Technology</p>
+        <div class="skill-tags">
+          <span class="tag">Google Cloud (GCP)</span><span class="tag">AI / LLM Enablement</span><span class="tag">Okta</span><span class="tag">Gainsight</span><span class="tag">CRM Systems</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-category">Stakeholder & Leadership</p>
+        <div class="skill-tags">
+          <span class="tag">Stakeholder Management</span><span class="tag">JAD Sessions</span><span class="tag">Workshops</span><span class="tag">Globalization</span><span class="tag">Distributed Teams</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-category">Documentation</p>
+        <div class="skill-tags">
+          <span class="tag">User Stories / UACs</span><span class="tag">SRS / BPM</span><span class="tag">Wireframes</span><span class="tag">Non-Functional Req.</span><span class="tag">Transition Docs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Where I've made an impact</p>
+    <h2 class="section-title">Work Experience</h2>
+    <div class="section-divider"></div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-role">Senior Business Analyst / Agile Practitioner</span>
+            <span class="timeline-date">Nov 2019 – Present</span>
+          </div>
+          <p class="timeline-company">Dun & Bradstreet · Full-time</p>
+          <div class="timeline-desc"><ul>
+            <li>Led end-to-end BA delivery for D&B Finance Analytics (credit-to-cash), producing BDD user stories, prototypes, and process flows for sprint-ready execution.</li>
+            <li>Built Contract Management and Subscription/Contract Usage enhancements with wireframes and transition documentation to streamline contracting workflows.</li>
+            <li>Integrated Virtual Back Office to simplify quote-to-cash, aligning Product, Engineering, and Operations through workshops and traceable requirements.</li>
+            <li>Supported global product expansion across multi-market rollouts with scalable configuration models and region-specific requirements.</li>
+            <li>Evaluated and recommended Gainsight for Customer Success; led integration requirements to improve customer engagement workflows.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-role">Lead Agile Business Systems Analyst</span>
+            <span class="timeline-date">Apr 2017 – Nov 2019</span>
+          </div>
+          <p class="timeline-company">Automatic Data Processing (ADP) · Full-time</p>
+          <div class="timeline-desc"><ul>
+            <li>Served as liaison between Business Transformation and Engineering for enterprise CRM, translating business needs into prioritized, sprint-ready backlogs.</li>
+            <li>Delivered persona-based dashboards and alerts that improved user efficiency and visibility into key workflows.</li>
+            <li>Led UAT planning and execution, tightening defect triage to reduce post-release issues through structured validation.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-role">Senior Agile Business Analyst</span>
+            <span class="timeline-date">Dec 2013 – Mar 2017</span>
+          </div>
+          <p class="timeline-company">BNY Mellon · Full-time</p>
+          <div class="timeline-desc"><ul>
+            <li>Led requirements for the Enterprise Risk (MARS) initiative supporting regulatory reporting and exposure monitoring aligned with control and audit needs.</li>
+            <li>Performed Client Master Data gap analysis to strengthen data governance and improve data quality for risk reporting.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-role">Systems Analyst / QA Lead</span>
+            <span class="timeline-date">Nov 1999 – Jul 2011</span>
+          </div>
+          <p class="timeline-company">Citigroup · Full-time</p>
+          <div class="timeline-desc"><ul>
+            <li>Led global QA validation for CitiDirect NextGen ensuring KYC, AML, and IBAN/SWIFT compliance with zero transaction disruption.</li>
+            <li>Supported legacy GCX channel decommissioning with zero transaction disruption.</li>
+          </ul></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">Key initiatives</p>
+    <h2 class="section-title">Project Highlights</h2>
+    <div class="section-divider"></div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#ffe0f0,#ffc0e0)">💳</div>
+        <div class="project-body">
+          <h3>D&B Finance Analytics</h3>
+          <p>Led BA delivery for a credit-to-cash platform, producing BDD user stories, prototypes, and process flows that drove sprint-ready execution at scale.</p>
+          <div class="project-tags"><span class="project-tag">Credit Analytics</span><span class="project-tag">BDD</span><span class="project-tag">UX Prototyping</span></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#ffd0e8,#ffb0d8)">⚖️</div>
+        <div class="project-body">
+          <h3>Enterprise Risk (MARS) — BNY Mellon</h3>
+          <p>Defined requirements for a global regulatory reporting and exposure monitoring initiative, ensuring alignment with audit and compliance controls.</p>
+          <div class="project-tags"><span class="project-tag">Regulatory Reporting</span><span class="project-tag">Data Governance</span><span class="project-tag">Risk</span></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#ffe8f4,#ffd0ec)">🔐</div>
+        <div class="project-body">
+          <h3>CitiDirect NextGen QA</h3>
+          <p>Led global QA validation ensuring KYC, AML, and IBAN/SWIFT compliance across Citigroup's flagship digital banking platform with zero disruption.</p>
+          <div class="project-tags"><span class="project-tag">QA Leadership</span><span class="project-tag">KYC / AML</span><span class="project-tag">Global Compliance</span></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#fff0f7,#ffe0f0)">🤝</div>
+        <div class="project-body">
+          <h3>ADP Enterprise CRM</h3>
+          <p>Translated business transformation needs into a prioritized backlog, delivering persona-based dashboards and improving sprint predictability across teams.</p>
+          <div class="project-tags"><span class="project-tag">CRM</span><span class="project-tag">Agile</span><span class="project-tag">UAT</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-name">Anoopama (Anoo) Murali</p>
+  <p>Senior Agile Business Analyst · CBAP® Certified · Florida, USA</p>
+  <div class="footer-links">
+    <a href="mailto:anoo21@gmail.com">anoo21@gmail.com</a>
+    <a href="https://www.linkedin.com/in/anoo-murali" target="_blank">LinkedIn ↗</a>
+    <a href="tel:9739014346">(973) 901-4346</a>
+  </div>
+</footer>
+
+</body>
+</html>
